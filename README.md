@@ -271,4 +271,4 @@ If you've found a bug regarding security please mail [info@yanselmask.com](mail:
 - [Spatie Opening Hours](https://github.com/spatie/opening-hours)
 - [Yanselmask](https://yanselmask.com/)
 
-![https://buymeacoffee.com/yanselmask](bmc-button.png)
+[![Buymeacoffe](bmc-button.png)](https://buymeacoffee.com/yanselmask)
