@@ -45,6 +45,23 @@ return [
 ];
 ```
 
+# Usage
+### Add openable functionality to your resource model
+
+To add openable functionality to your resource model just use the `\Yanselmask\Openable\Traits\Openable` trait like this:
+
+```php
+namespace App\Models;
+
+use Yanselmask\Openable\Traits\Openable;
+use Illuminate\Database\Eloquent\Model;
+
+class Restaurant extends Model
+{
+    use Openable;
+}
+```
+
 A set of opening hours is created by passing in a regular schedule, and a list of exceptions
 ```php
 // Add the use at the top of each file where you want to use the OpeningHours class:
@@ -67,6 +84,7 @@ $restaurant->setShift(
         '01-01'      => [],                // Recurring on each 1st of January
         '12-25'      => ['09:00-12:00'],   // Recurring on each 25th of December
     ]
+]
 );
 ```
 The object can be queried for a day in the week, which will return a result based on the regular schedule
@@ -266,7 +284,7 @@ Checks if the business is closed right now.
 $restaurant->isClosed();
 ```
 ## Security
-If you've found a bug regarding security please mail [info@yanselmask.com](mail:info@yanselmask.com) instead of using the issue tracker.
+If you've found a bug regarding security please mail [info@yanselmask.com](info@yanselmask.com) instead of using the issue tracker.
 ## Credits
 - [Spatie Opening Hours](https://github.com/spatie/opening-hours)
 - [Yanselmask](https://yanselmask.com/)
