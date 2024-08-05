@@ -1,6 +1,6 @@
 {
     "name": "yanselmask/openable",
-    "description": "This package is designed to simplify and automate the management of opening and closing hours for various establishments, such as stores, restaurants, gyms, or nightclubs. ",
+    "description": "This package is designed to simplify and automate the management of opening and closing hours for various establishments, such as stores, restaurants, gyms, or nightclubs.",
     "keywords": [
         "laravel",
         "framework",
