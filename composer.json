@@ -21,21 +21,21 @@
         "opening-months"
     ],
     "type": "library",
-    "require": {
-        "spatie/opening-hours": "^4.0"
-    },
     "license": "MIT",
-    "autoload": {
-        "psr-4": {
-            "Yanselmask\\Openable\\": "src/"
-        }
-    },
     "authors": [
         {
             "name": "Yanselmask",
             "email": "jansel48@hotmail.com"
         }
     ],
+    "require": {
+        "spatie/opening-hours": "^4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Yanselmask\\Openable\\": "src/"
+        }
+    },
     "extra": {
         "laravel": {
             "providers": [

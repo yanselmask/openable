@@ -49,6 +49,26 @@ trait Openable
                     ->where('is_default',true)
                     ->first();
     }
+
+    /**
+     * Set a new shift on the database
+     * @param array $data
+     * @param bool $active
+     * @param bool $default
+     * @return \Yanselmask\Openable\Models\Openable
+     */
+    public function setShift(array $data,bool $active = true,bool $default = false):\Yanselmask\Openable\Models\Openable
+    {
+        return $this->shifts()->create([
+            'data' => $data,
+            'active' => $active,
+            'default' => $default,
+        ]);
+    }
+    public function op()
+    {
+        return $this->openingHours();
+    }
     /**
      * The resource may have many bookings.
      *
