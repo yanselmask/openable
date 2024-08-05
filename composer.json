@@ -1,0 +1,48 @@
+{
+    "name": "yanselmask/openable",
+    "description": "This package is designed to simplify and automate the management of opening and closing hours for various establishments, such as stores, restaurants, gyms, or nightclubs. ",
+    "keywords": [
+        "laravel",
+        "framework",
+        "Yanselmask",
+        "Spatie",
+        "Openable",
+        "opening-hours",
+        "restaurant",
+        "hotel",
+        "rentalcars",
+        "rental",
+        "shifts",
+        "hours",
+        "times",
+        "dates",
+        "opening-hours",
+        "opening-days",
+        "opening-months"
+    ],
+    "type": "library",
+    "require": {
+        "spatie/opening-hours": "^4.0"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Yanselmask\\Openable\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Yanselmask",
+            "email": "jansel48@hotmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Yanselmask\\Openable\\Providers\\ServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
