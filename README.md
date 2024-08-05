@@ -127,7 +127,7 @@ $restaurant->exceptions();
 ```
 On construction, you can set a flag for overflowing times across days. For example, for a nightclub opens until 3am on Friday and Saturday:
 ```php
-user App\Models\Nightclub;
+use App\Models\Nightclub;
 
 $nightclub = Nightclub::find(1);
 
