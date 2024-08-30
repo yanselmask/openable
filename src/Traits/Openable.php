@@ -199,6 +199,8 @@ trait Openable
      */
     public function exceptions(): array|null
     {
+        if($this->openingHours()) return [];
+
         return $this->openingHours()?->exceptions();
     }
     /**
