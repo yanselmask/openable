@@ -72,11 +72,13 @@ trait Openable
     /**
      * The resource may have many bookings.
      *
-     * @return OpeningHours
+     * @return OpeningHours|array|null
      */
-    private function openingHours(): OpeningHours
+    private function openingHours(): OpeningHours|array|null
     {
         $data = $this->shiftByDefault();
+        if (!$data) return [];
+
         $openingHours = OpeningHours::create($data?->data);
         return $openingHours;
     }
