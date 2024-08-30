@@ -94,14 +94,14 @@ trait Openable
             $time = new \DateTime('now');
         }
 
-        $range = $this->openingHours()->currentOpenRange($time);
+        $range = $this->openingHours()?->currentOpenRange($time);
 
         if ($range) {
             echo "It's open since ".$range->start()."\n";
             echo "It will close at ".$range->end()."\n";
         } else {
-            echo "It's closed since ".$this->openingHours()->previousClose($time)->format('l H:i')."\n";
-            echo "It will re-open at ".$this->openingHours()->nextOpen($time)->format('l H:i')."\n";
+            echo "It's closed since ".$this->openingHours()?->previousClose($time)->format('l H:i')."\n";
+            echo "It will re-open at ".$this->openingHours()?->nextOpen($time)->format('l H:i')."\n";
         }
     }
     /**
@@ -111,7 +111,7 @@ trait Openable
      */
     public function currentOpenRangeStart(\DateTimeInterface $time): void
     {
-        $range = $this->openingHours()->currentOpenRangeStart($time);
+        $range = $this->openingHours()?->currentOpenRangeStart($time);
          if($range)
          {
              echo "It's open since ".$range->format('H:i');
@@ -126,7 +126,7 @@ trait Openable
      */
     public function currentOpenRangeEnd(\DateTimeInterface $time): void
     {
-        $range = $this->openingHours()->currentOpenRangeEnd($time);
+        $range = $this->openingHours()?->currentOpenRangeEnd($time);
         if($range)
         {
             echo "It will close at ".$range->format('H:i');
@@ -141,210 +141,210 @@ trait Openable
      */
     public function isOpenOn(String $time): bool
     {
-        return $this->openingHours()->isOpenOn($time);
+        return $this->openingHours()?->isOpenOn($time);
     }
     /**
      * It can also be queried for a specific date and time
      * @param \DateTime $time
      */
-    public function isOpenAt($time): bool
+    public function isOpenAt($time): bool|null
     {
-        return $this->openingHours()->isOpenAt($time);
+        return $this->openingHours()?->isOpenAt($time);
     }
     /**
      * OpeningHoursForDay object for the regular schedule
      * @param Day|string $time
-     * @return OpeningHoursForDay
+     * @return OpeningHoursForDay|null
      */
-    public function forDay($time): OpeningHoursForDay
+    public function forDay($time): OpeningHoursForDay|null
     {
-        return $this->openingHours()->forDay($time);
+        return $this->openingHours()?->forDay($time);
     }
     /**
      * OpeningHoursForDay[] for the regular schedule, keyed by day name
-     * @return array
+     * @return array|null
      */
-    public function forWeek(): array
+    public function forWeek(): array|null
     {
-        return $this->openingHours()->forWeek();
+        return $this->openingHours()?->forWeek();
     }
     /**
      * Array of day with same schedule for the regular schedule, keyed by day name, days combined by working hours
-     * @return array
+     * @return array|null
      */
-    public function forWeekCombined(): array
+    public function forWeekCombined(): array|null
     {
-        return $this->openingHours()->forWeekCombined();
+        return $this->openingHours()?->forWeekCombined();
     }
     /**
      * Returns an array of concatenated days, adjacent days with the same hours. Array key is first day with same hours, array values are days that have the same working hours and OpeningHoursForDay object.
-     * @return array
+     * @return array|null
      */
-    public function forWeekConsecutiveDays(): array
+    public function forWeekConsecutiveDays(): array|null
     {
-        return $this->openingHours()->forWeekConsecutiveDays();
+        return $this->openingHours()?->forWeekConsecutiveDays();
     }
     /**
      * OpeningHoursForDay object for a specific day
      * @param \DateTime $time
-     * @return OpeningHoursForDay
+     * @return OpeningHoursForDay|null
      */
-    public function forDate($time): OpeningHoursForDay
+    public function forDate($time): OpeningHoursForDay|null
     {
-        return $this->openingHours()->forDate($time);
+        return $this->openingHours()?->forDate($time);
     }
     /**
      * OpeningHoursForDay[] of all exceptions, keyed by date
-     * @return array
+     * @return array|null
      */
-    public function exceptions(): array
+    public function exceptions(): array|null
     {
-        return $this->openingHours()->exceptions();
+        return $this->openingHours()?->exceptions();
     }
     /**
      * It can also return the next open or close DateTime from a given DateTime
      * @param \DateTimeInterface $time|null
-     * @return \DateTimeInterface
+     * @return \DateTimeInterface|null
      */
-    public function nextOpen(\DateTimeInterface $time = null): \DateTimeInterface
+    public function nextOpen(\DateTimeInterface $time = null): \DateTimeInterface|null
     {
-        return $this->openingHours()->nextOpen($time);
+        return $this->openingHours()?->nextOpen($time);
     }
     /**
      * It can also return the next open or close DateTime from a given DateTime
      * @param \DateTimeInterface $time|null
-     * @return \DateTimeInterface
+     * @return \DateTimeInterface|null
      */
-    public function nextClose(\DateTimeInterface $time = null): \DateTimeInterface
+    public function nextClose(\DateTimeInterface $time = null): \DateTimeInterface|null
     {
-        return $this->openingHours()->nextClose($time);
+        return $this->openingHours()?->nextClose($time);
     }
     /**
      * Checks if the business is closed on a day in the regular schedule.
      * @param string $time
-     * @return bool
+     * @return bool|null
      */
-    public function isClosedOn(string $time): bool
+    public function isClosedOn(string $time): bool|null
     {
-        return $this->openingHours()->isClosedOn($time);
+        return $this->openingHours()?->isClosedOn($time);
     }
     /**
      * Checks if the business is closed on a specific day, at a specific time.
      * @param  $time
-     * @return bool
+     * @return bool|null
      */
-    public function isClosedAt( $time): bool
+    public function isClosedAt( $time): bool|null
     {
-        return $this->openingHours()->isClosedAt($time);
+        return $this->openingHours()?->isClosedAt($time);
     }
     /**
      * Checks if the business is open right now.
-     * @return bool
+     * @return bool|null
      */
-    public function isOpen(): bool
+    public function isOpen(): bool|null
     {
-        return $this->openingHours()->isOpen();
+        return $this->openingHours()?->isOpen();
     }
     /**
      * Checks if the business is closed right now.
-     * @return bool
+     * @return bool|null
      */
-    public function isClosed(): bool
+    public function isClosed(): bool|null
     {
-        return $this->openingHours()->isClosed();
+        return $this->openingHours()?->isClosed();
     }
     /**
      * Checks if the business is open 24/7, has no exceptions and no filters.
-     * @return bool
+     * @return bool|null
      */
-    public function isAlwaysOpen(): bool
+    public function isAlwaysOpen(): bool|null
     {
-        return $this->openingHours()->isAlwaysOpen();
+        return $this->openingHours()?->isAlwaysOpen();
     }
     /**
      * Checks if the business is open 24/7, has no exceptions and no filters.
-     * @return bool
+     * @return bool|null
      */
-    public function isAlwaysClosed(): bool
+    public function isAlwaysClosed(): bool|null
     {
-        return $this->openingHours()->isAlwaysClosed();
+        return $this->openingHours()?->isAlwaysClosed();
     }
     /**
      * Return the amount of open time (number of hours as a floating number) between 2 dates/times.
      * @param \DateTimeInterface $startDate
      * @param \DateTimeInterface $endDate
-     * @return float
+     * @return float|null
      */
-    public function diffInOpenHours(\DateTimeInterface $startDate, \DateTimeInterface $endDate): float
+    public function diffInOpenHours(\DateTimeInterface $startDate, \DateTimeInterface $endDate): float|null
     {
-        return $this->openingHours()->diffInOpenHours($startDate, $endDate);
+        return $this->openingHours()?->diffInOpenHours($startDate, $endDate);
     }
     /**
      * Return the amount of open time (number of minutes as a floating number) between 2 dates/times.
      * @param \DateTimeInterface $startDate
      * @param \DateTimeInterface $endDate
-     * @return float
+     * @return float|null
      */
-    public function diffInOpenMinutes(\DateTimeInterface $startDate, \DateTimeInterface $endDate): float
+    public function diffInOpenMinutes(\DateTimeInterface $startDate, \DateTimeInterface $endDate): float|null
     {
-        return $this->openingHours()->diffInOpenMinutes($startDate, $endDate);
+        return $this->openingHours()?->diffInOpenMinutes($startDate, $endDate);
     }
     /**
      * Return the amount of open time (number of seconds as a floating number) between 2 dates/times.
      * @param \DateTimeInterface $startDate
      * @param \DateTimeInterface $endDate
-     * @return float
+     * @return float|null
      */
-    public function diffInOpenSeconds(\DateTimeInterface $startDate, \DateTimeInterface $endDate): float
+    public function diffInOpenSeconds(\DateTimeInterface $startDate, \DateTimeInterface $endDate): float|null
     {
-        return $this->openingHours()->diffInOpenSeconds($startDate, $endDate);
+        return $this->openingHours()?->diffInOpenSeconds($startDate, $endDate);
     }
     /**
      * Return the amount of closed time (number of hours as a floating number) between 2 dates/times.
      * @param \DateTimeInterface $startDate
      * @param \DateTimeInterface $endDate
-     * @return float
+     * @return float|null
      */
-    public function diffInClosedHours(\DateTimeInterface $startDate, \DateTimeInterface $endDate): float
+    public function diffInClosedHours(\DateTimeInterface $startDate, \DateTimeInterface $endDate): float|null
     {
-        return $this->openingHours()->diffInClosedHours($startDate, $endDate);
+        return $this->openingHours()?->diffInClosedHours($startDate, $endDate);
     }
     /**
      * Return the amount of closed time (number of minutes as a floating number) between 2 dates/times.
      * @param \DateTimeInterface $startDate
      * @param \DateTimeInterface $endDate
-     * @return float
+     * @return float|null
      */
-    public function diffInClosedMinutes(\DateTimeInterface $startDate, \DateTimeInterface $endDate): float
+    public function diffInClosedMinutes(\DateTimeInterface $startDate, \DateTimeInterface $endDate): float|null
     {
-        return $this->openingHours()->diffInClosedMinutes($startDate, $endDate);
+        return $this->openingHours()?->diffInClosedMinutes($startDate, $endDate);
     }
     /**
      * Return the amount of closed time (number of seconds as a floating number) between 2 dates/times.
      * @param \DateTimeInterface $startDate
      * @param \DateTimeInterface $endDate
-     * @return float
+     * @return float|null
      */
-    public function diffInClosedSeconds(\DateTimeInterface $startDate, \DateTimeInterface $endDate): float
+    public function diffInClosedSeconds(\DateTimeInterface $startDate, \DateTimeInterface $endDate): float|null
     {
-        return $this->openingHours()->diffInClosedSeconds($startDate, $endDate);
+        return $this->openingHours()?->diffInClosedSeconds($startDate, $endDate);
     }
     /**
      * Returns previous open DateTime from the given DateTime ($dateTime or from now if this parameter is null or omitted).
      * @param \DateTimeInterface $time
-     * @return \DateTimeInterface
+     * @return \DateTimeInterface|null
      */
-    public function previousOpen($time): \DateTimeInterface
+    public function previousOpen($time): \DateTimeInterface|null
     {
-        return $this->openingHours()->previousOpen($time);
+        return $this->openingHours()?->previousOpen($time);
     }
     /**
      * Returns previous close DateTime from the given DateTime ($dateTime or from now if this parameter is null or omitted).
      * @param \DateTimeInterface $time
-     * @return \DateTimeInterface
+     * @return \DateTimeInterface|null
      */
-    public function previousClose(\DateTimeInterface $time): \DateTimeInterface
+    public function previousClose(\DateTimeInterface $time): \DateTimeInterface|null
     {
-        return $this->openingHours()->previousClose($time);
+        return $this->openingHours()?->previousClose($time);
     }
 }
