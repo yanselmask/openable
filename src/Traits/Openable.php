@@ -41,9 +41,9 @@ trait Openable
     /**
      * The resource by default
      *
-     * @return \Yanselmask\Openable\Models\Openable
+     * @return ?\Yanselmask\Openable\Models\Openable
      */
-    public function shiftByDefault(): \Yanselmask\Openable\Models\Openable
+    public function shiftByDefault(): ?\Yanselmask\Openable\Models\Openable
     {
         return $this->shiftsActived()
                     ->where('is_default',true)
